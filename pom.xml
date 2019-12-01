@@ -4,6 +4,20 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <artifactId>web-survey</artifactId>
 
+  <!-- FIXME change it to the project's website -->
+  <name>web-survey</name>
+
+  <properties>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <url>http://www.example.com</url>
+
+  <version>1.0-SNAPSHOT</version>
+  <groupId>dev.kurama</groupId>
+  <modelVersion>4.0.0</modelVersion>
   <build>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
@@ -49,6 +63,7 @@
       </plugins>
     </pluginManagement>
   </build>
+
   <dependencies>
     <dependency>
       <artifactId>junit</artifactId>
@@ -69,19 +84,4 @@
     </dependency>
 
   </dependencies>
-  <groupId>dev.kurama</groupId>
-
-  <modelVersion>4.0.0</modelVersion>
-  <!-- FIXME change it to the project's website -->
-  <name>web-survey</name>
-
-  <properties>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
-
-  <url>http://www.example.com</url>
-
-  <version>1.0-SNAPSHOT</version>
 </project>

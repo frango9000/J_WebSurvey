@@ -25,4 +25,8 @@ public class EncuestaBean {
     public ArrayList<Integer> getRespuestas() {
         return respuestas;
     }
+
+    public void setRespuestas(ArrayList<Integer> respuestas) {
+        this.respuestas = respuestas;
+    }
 }

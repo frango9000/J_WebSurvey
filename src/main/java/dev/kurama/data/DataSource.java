@@ -2,6 +2,8 @@ package dev.kurama.data;
 
 import dev.kurama.model.Pregunta;
 import dev.kurama.model.Usuario;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Optional;
 
 public class DataSource {
@@ -27,14 +29,14 @@ public class DataSource {
 
     private static Pregunta[] preguntas = {
         new Pregunta("Pregunta 1", "Opcion 1", "Opcion 2", "Opcion 3", "Opcion 4", "Opcion 5"),
-        new Pregunta("Pregunta 1", "Opcion 1", "Opcion 2", "Opcion 3", "Opcion 4"),
-        new Pregunta("Pregunta 1", "Opcion 1", "Opcion 2", "Opcion 3", "Opcion 4", "Opcion 5", "Opcion 6"),
-        new Pregunta("Pregunta 1", "Opcion 1", "Opcion 2"),
-        new Pregunta("Pregunta 1", "Opcion 1", "Opcion 2", "Opcion 3", "Opcion 4"),
-        new Pregunta("Pregunta 1", "Opcion 1", "Opcion 2", "Opcion 3")
+        new Pregunta("Pregunta 2", "Opcion 1", "Opcion 2", "Opcion 3", "Opcion 4"),
+        new Pregunta("Pregunta 3", "Opcion 1", "Opcion 2", "Opcion 3", "Opcion 4", "Opcion 5", "Opcion 6"),
+        new Pregunta("Pregunta 4", "Opcion 1", "Opcion 2"),
+        new Pregunta("Pregunta 5", "Opcion 1", "Opcion 2", "Opcion 3", "Opcion 4"),
+        new Pregunta("Pregunta 6", "Opcion 1", "Opcion 2", "Opcion 3")
     };
 
-    public static Pregunta[] getPreguntas() {
-        return preguntas;
+    public static ArrayList<Pregunta> getPreguntas() {
+        return new ArrayList<>(Arrays.asList(preguntas));
     }
 }

@@ -15,7 +15,12 @@
 <body>
 
 Bienvenido Usuario ${usuario.email}<br>
-Encuesta: <c:if test="${empty usuario.encuesta}">No Realizada"</c:if>
+Encuesta:
+<c:choose>
+    <c:when test="${empty usuario.encuesta}">No Realizada"</c:when>
+    <c:otherwise>Finalizada </c:otherwise>
+</c:choose>
+<br><a href="/encuesta"> Encuesta </a><br>
 
 
 <form action="/logout" method="get"><input type="submit" value="Log Out"></form>

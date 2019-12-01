@@ -15,11 +15,11 @@
     <table>
         <tr>
             <th>Usuario:</th>
-            <td><input type="text" name="email"/></td>
+            <td><input type="text" name="email" value="admin"/></td>
         </tr>
         <tr>
             <th>Clave:</th>
-            <td><input type="password" name="pass"/></td>
+            <td><input type="password" name="pass" value="admin"/></td>
         </tr>
         <tr>
             <td rowspan="2"><input type="submit"></td>

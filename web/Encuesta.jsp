@@ -12,9 +12,15 @@
     <title>Encuesta</title>
 </head>
 <body>
-<form method="post" action="/encuesta">
-
-
+<form method="post" action="encuesta">
+    <%--@elvariable id="preguntas" type="java.util.List"--%>
+    <c:forEach items="${preguntas}" var="pregunta" varStatus="i">
+        <br>${i.index} - ${pregunta.pregunta}<br>
+        <c:forEach items="${pregunta.opciones}" var="opcion" varStatus="j">
+            <input type="radio" name="radio${i.index}" value="${j.index}" checked>${opcion}<br>
+        </c:forEach>
+    </c:forEach>
+    <input type="submit">
 </form>
 </body>
 </html>
