@@ -1,5 +1,6 @@
 package dev.kurama.data;
 
+import dev.kurama.model.Pregunta;
 import dev.kurama.model.Usuario;
 import java.util.Optional;
 
@@ -22,5 +23,18 @@ public class DataSource {
                 return Optional.of(usuario);
         }
         return Optional.empty();
+    }
+
+    private static Pregunta[] preguntas = {
+        new Pregunta("Pregunta 1", "Opcion 1", "Opcion 2", "Opcion 3", "Opcion 4", "Opcion 5"),
+        new Pregunta("Pregunta 1", "Opcion 1", "Opcion 2", "Opcion 3", "Opcion 4"),
+        new Pregunta("Pregunta 1", "Opcion 1", "Opcion 2", "Opcion 3", "Opcion 4", "Opcion 5", "Opcion 6"),
+        new Pregunta("Pregunta 1", "Opcion 1", "Opcion 2"),
+        new Pregunta("Pregunta 1", "Opcion 1", "Opcion 2", "Opcion 3", "Opcion 4"),
+        new Pregunta("Pregunta 1", "Opcion 1", "Opcion 2", "Opcion 3")
+    };
+
+    public static Pregunta[] getPreguntas() {
+        return preguntas;
     }
 }

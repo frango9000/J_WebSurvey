@@ -8,8 +8,12 @@
     <servlet-class>dev.kurama.control.Login</servlet-class>
   </servlet>
   <servlet>
-    <servlet-class>dev.kurama.control.Logout</servlet-class>
     <servlet-name>Logout</servlet-name>
+    <servlet-class>dev.kurama.control.Logout</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-class>dev.kurama.control.Encuesta</servlet-class>
+    <servlet-name>Encuesta</servlet-name>
   </servlet>
   <servlet-mapping>
     <servlet-name>Login</servlet-name>
@@ -18,5 +22,9 @@
   <servlet-mapping>
     <servlet-name>Logout</servlet-name>
     <url-pattern>/logout</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Encuesta</servlet-name>
+    <url-pattern>/encuesta</url-pattern>
   </servlet-mapping>
 </web-app>

@@ -8,6 +8,8 @@ public class Usuario {
     private String email;
     private String pass;
 
+    private EncuestaBean encuesta;
+
     public Usuario() {
     }
 
@@ -15,6 +17,13 @@ public class Usuario {
         this.id    = id;
         this.email = email;
         this.pass  = pass;
+    }
+
+    public Usuario(long id, String email, String pass, EncuestaBean encuesta) {
+        this.id       = id;
+        this.email    = email;
+        this.pass     = pass;
+        this.encuesta = encuesta;
     }
 
     public long getId() {
@@ -39,6 +48,14 @@ public class Usuario {
 
     public void setPass(String pass) {
         this.pass = pass;
+    }
+
+    public EncuestaBean getEncuesta() {
+        return encuesta;
+    }
+
+    public void setEncuesta(EncuestaBean encuesta) {
+        this.encuesta = encuesta;
     }
 
     @Override
