@@ -20,16 +20,20 @@ public class Login extends HttpServlet {
         Optional<Usuario> usuario = DataSource.getUsuario(email, pass);
         System.out.println(usuario.orElse(new Usuario(0, "Err", "Err")));
         if (usuario.isPresent()) {
-            request.setAttribute("usuario", usuario.get());
-            RequestDispatcher rd = request.getRequestDispatcher("Home.jsp");
-            rd.forward(request, response);
+            request.getSession().setAttribute("usuario", usuario.get());
+            response.sendRedirect("Home.jsp");
         } else
-            request.getRequestDispatcher("Error.jsp").forward(request, response);
+            response.sendRedirect("Error.jsp");
 
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.getWriter().println("Hello Narf");
+
+        Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
+        if (usuario == null) {
+            request.getRequestDispatcher("Login.jsp").forward(request, response);
+        } else
+            response.sendRedirect("Home.jsp");
     }
 }
