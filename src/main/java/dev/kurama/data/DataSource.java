@@ -5,6 +5,7 @@ import dev.kurama.model.Usuario;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Optional;
+import javax.persistence.Query;
 
 public class DataSource {
 
@@ -22,12 +23,21 @@ public class DataSource {
         return usuarios;
     }
 
+    //    public static Optional<Usuario> getUsuario(String email, String pass) {
+//        for (Usuario usuario : usuarios) {
+//            if (usuario.getEmail().equals(email) && usuario.getPass().equals(pass))
+//                return Optional.of(usuario);
+//        }
+//        return Optional.empty();
+//    }
     public static Optional<Usuario> getUsuario(String email, String pass) {
-        for (Usuario usuario : usuarios) {
-            if (usuario.getEmail().equals(email) && usuario.getPass().equals(pass))
-                return Optional.of(usuario);
+        Query query = ConnectionFactory.getEntityManager().createNamedQuery("Usuario.findOne").setParameter("email", email).setParameter("pass", pass);
+        try {
+            Usuario usuario = (Usuario) query.getSingleResult();
+            return Optional.of(usuario);
+        } catch (Exception e) {
+            return Optional.empty();
         }
-        return Optional.empty();
     }
 
     private static Pregunta[] preguntas = {

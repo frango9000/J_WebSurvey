@@ -11,8 +11,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 @Entity
+@NamedQueries({
+                  @NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM usuario u"),
+                  @NamedQuery(name = "Usuario.findOne", query = "SELECT u FROM usuario u WHERE u.email = :email AND u.pass = :pass")
+              })
 public class Usuario {
 
     @Id

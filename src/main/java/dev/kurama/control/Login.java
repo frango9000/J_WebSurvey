@@ -4,7 +4,6 @@ import dev.kurama.data.DataSource;
 import dev.kurama.model.Usuario;
 import java.io.IOException;
 import java.util.Optional;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,6 +16,7 @@ public class Login extends HttpServlet {
         String email = request.getParameter("email");
         String pass = request.getParameter("pass");
         System.out.println(email + " " + pass);
+
         Optional<Usuario> usuario = DataSource.getUsuario(email, pass);
         System.out.println(usuario.orElse(new Usuario(0, "Err", "Err")));
         if (usuario.isPresent()) {
