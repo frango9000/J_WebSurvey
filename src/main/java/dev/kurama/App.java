@@ -17,6 +17,7 @@ public class App {
 
     private static void initDb() {
         EntityManager em = ConnectionFactory.getEntityManager();
+
         em.getTransaction().begin();
         for (Usuario usuario : DataSource.getUsuarios()) {
             em.merge(usuario);

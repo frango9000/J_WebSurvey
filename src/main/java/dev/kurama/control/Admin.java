@@ -15,6 +15,6 @@ public class Admin extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getSession().setAttribute("usuarios", DataSource.getUsuarios());
-        request.getRequestDispatcher("Admin.jsp").forward(request, response);
+        request.getRequestDispatcher("admin/Admin.jsp").forward(request, response);
     }
 }

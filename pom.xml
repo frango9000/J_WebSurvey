@@ -18,6 +18,7 @@
   <version>1.0-SNAPSHOT</version>
   <groupId>dev.kurama</groupId>
   <modelVersion>4.0.0</modelVersion>
+  <packaging>war</packaging>
   <build>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
@@ -83,6 +84,7 @@
       <version>1.2</version>
     </dependency>
 
+
     <dependency>
       <groupId>org.hibernate</groupId>
       <artifactId>hibernate-core</artifactId>
@@ -104,6 +106,7 @@
       <artifactId>mariadb-java-client</artifactId>
       <version>2.4.4</version>
     </dependency>
+
 
   </dependencies>
 </project>

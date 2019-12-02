@@ -1,4 +1,4 @@
-<%--@elvariable id="usuario" type="dev.kurama.model.Usuario"--%>
+<%--@elvariable id="userDetail" type="dev.kurama.model.Usuario"--%>
 <%--
   Created by IntelliJ IDEA.
   User: NarF
@@ -10,24 +10,24 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>Usuario</title>
+    <title>Admin - Usuario</title>
 </head>
 <body>
-Usuario ${usuario.email}<br><br>
+Usuario ${userDetail.email}<br><br>
 <c:choose>
-    <c:when test="${empty usuario.respuestas}">Encuesta no Realizada"</c:when>
+    <c:when test="${empty userDetail.respuestas}">Encuesta no Realizada"</c:when>
     <c:otherwise>Tu Encuesta:<br><br>
         <jsp:useBean id="source" class="dev.kurama.data.DataSource"/>
         <c:forEach var="pregunta" items="${source.getPreguntas()}" varStatus="i">
             ${i.index} - Pregunta: ${pregunta.pregunta}<br>
 
-            &nbsp;&nbsp;&nbsp;&nbsp;${usuario.respuestas.get(i.index).respuesta} - ${pregunta.opciones.get(usuario.respuestas.get(i.index).respuesta)}
+            &nbsp;&nbsp;&nbsp;&nbsp;${userDetail.respuestas.get(i.index).respuesta} - ${pregunta.opciones.get(userDetail.respuestas.get(i.index).respuesta)}
             <br>
             <br>
         </c:forEach>
     </c:otherwise>
 </c:choose>
 <br><br>
-<a href="/login">Volver</a>
+<a href="/admin/usuarios">Volver</a>
 </body>
 </html>

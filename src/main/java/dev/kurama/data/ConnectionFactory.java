@@ -13,12 +13,13 @@ public abstract class ConnectionFactory {
     }
 
     public static EntityManager getEntityManager() {
+        return getEntityManagerFactory().createEntityManager();
+    }
+
+    public static EntityManagerFactory getEntityManagerFactory() {
         if (entityManagerFactory == null)
-            synchronized (EntityManagerFactory.class) {
-                if (entityManagerFactory == null)
-                    entityManagerFactory = Persistence.createEntityManagerFactory("SurveyPersistenceUnit");
-            }
-        return entityManagerFactory.createEntityManager();
+            entityManagerFactory = Persistence.createEntityManagerFactory("SurveyPersistenceUnit");
+        return entityManagerFactory;
     }
 
     public static void close() {

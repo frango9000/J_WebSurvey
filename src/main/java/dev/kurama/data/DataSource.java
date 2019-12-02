@@ -31,7 +31,10 @@ public class DataSource {
 //        return Optional.empty();
 //    }
     public static Optional<Usuario> getUsuario(String email, String pass) {
-        Query query = ConnectionFactory.getEntityManager().createNamedQuery("Usuario.findOne").setParameter("email", email).setParameter("pass", pass);
+        Query query = ConnectionFactory.getEntityManager()
+                                       .createNamedQuery("Usuario.findByAuth")
+                                       .setParameter("email", email)
+                                       .setParameter("pass", pass);
         try {
             Usuario usuario = (Usuario) query.getSingleResult();
             return Optional.of(usuario);
@@ -53,11 +56,15 @@ public class DataSource {
         return new ArrayList<>(Arrays.asList(preguntas));
     }
 
-    public static Usuario getUsuario(int id) {
-        for (Usuario usuario : usuarios) {
-            if (usuario.getId() == id)
-                return usuario;
+    public static Optional<Usuario> getUsuario(int id) {
+        Query query = ConnectionFactory.getEntityManager()
+                                       .createNamedQuery("Usuario.findById")
+                                       .setParameter("id", id);
+        try {
+            Usuario usuario = (Usuario) query.getSingleResult();
+            return Optional.of(usuario);
+        } catch (Exception e) {
+            return Optional.empty();
         }
-        return null;
     }
 }

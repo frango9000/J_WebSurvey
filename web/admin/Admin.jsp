@@ -12,12 +12,14 @@
     <title>Admin</title>
 </head>
 <body>
-<h1>Admin</h1><br><br><br>
+<h1>Admin</h1>
+<h2>Bienvenido ${usuario.email}</h2>
 
-<%--@elvariable id="usuarios" type="java.util.List"--%>
-<c:forEach var="user" items="${usuarios}" varStatus="i">
-    <a href="/usuario?id=${user.id}">${user.email}</a><br>
-</c:forEach>
+<a href="/admin/usuarios">Usuarios</a><br>
+<a href="/admin/preguntas">Preguntas</a><br>
+
+<br><a href="/login">Volver</a><br>
+
 
 </body>
 </html>
