@@ -12,8 +12,16 @@
     <servlet-class>dev.kurama.control.Logout</servlet-class>
   </servlet>
   <servlet>
-    <servlet-class>dev.kurama.control.Encuesta</servlet-class>
     <servlet-name>Encuesta</servlet-name>
+    <servlet-class>dev.kurama.control.Encuesta</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>UsuarioDetail</servlet-name>
+    <servlet-class>dev.kurama.control.UsuarioDetail</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>Admin</servlet-name>
+    <servlet-class>dev.kurama.control.Admin</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>Login</servlet-name>
@@ -26,5 +34,13 @@
   <servlet-mapping>
     <servlet-name>Encuesta</servlet-name>
     <url-pattern>/encuesta</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UsuarioDetail</servlet-name>
+    <url-pattern>/usuario</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Admin</servlet-name>
+    <url-pattern>/admin</url-pattern>
   </servlet-mapping>
 </web-app>

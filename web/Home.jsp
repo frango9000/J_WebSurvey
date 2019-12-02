@@ -14,15 +14,16 @@
 </head>
 <body>
 
-Bienvenido Usuario ${usuario.email}<br>
-Encuesta:
+<h2>Bienvenido Usuario ${usuario.email}</h2>
+<c:if test="${usuario.id eq 1}"><br><a href="/admin"> Admin </a><br></c:if>
+
+<br><br><a href="/usuario"> Detalle de Usuario </a><br><br>
+Encuesta:<br>
 <c:choose>
-    <c:when test="${empty usuario.encuesta}">No Realizada"</c:when>
+    <c:when test="${empty usuario.respuestas}">No Realizada <br><a href="/encuesta">Realizar Ahora</a>"</c:when>
     <c:otherwise>Finalizada </c:otherwise>
 </c:choose>
-<br><a href="/encuesta"> Encuesta </a><br>
-
-
+<br><br>
 <form action="/logout" method="get"><input type="submit" value="Log Out"></form>
 
 </body>

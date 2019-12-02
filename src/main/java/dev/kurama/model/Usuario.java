@@ -1,36 +1,53 @@
 package dev.kurama.model;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
+import javax.persistence.CollectionTable;
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 
+@Entity
 public class Usuario {
 
-    private long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(updatable = false, insertable = false)
+    private int id;
+
+
     private String email;
     private String pass;
+    private boolean encuestaRealizada = false;
 
-    private EncuestaBean encuesta;
+    @ElementCollection
+    @CollectionTable(name = "respuestas", joinColumns = @JoinColumn(name = "user_id"))
+    private List<Respuesta> respuestas = new ArrayList<>();
 
     public Usuario() {
     }
 
-    public Usuario(long id, String email, String pass) {
+    public Usuario(String email, String pass) {
+        this.email = email;
+        this.pass  = pass;
+    }
+
+    public Usuario(int id, String email, String pass) {
         this.id    = id;
         this.email = email;
         this.pass  = pass;
     }
 
-    public Usuario(long id, String email, String pass, EncuestaBean encuesta) {
-        this.id       = id;
-        this.email    = email;
-        this.pass     = pass;
-        this.encuesta = encuesta;
-    }
-
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -50,12 +67,23 @@ public class Usuario {
         this.pass = pass;
     }
 
-    public EncuestaBean getEncuesta() {
-        return encuesta;
+    public boolean isEncuestaRealizada() {
+        return encuestaRealizada;
     }
 
-    public void setEncuesta(EncuestaBean encuesta) {
-        this.encuesta = encuesta;
+    public void setEncuestaRealizada(boolean encuestaRealizada) {
+        this.encuestaRealizada = encuestaRealizada;
+    }
+
+    public List<Respuesta> getRespuestas() {
+        return respuestas;
+    }
+
+    public void setRespuestas(ArrayList<Integer> respuestas) {
+        this.respuestas.clear();
+        for (int i = 0; i < respuestas.size(); i++) {
+            this.respuestas.add(new Respuesta(i, respuestas.get(i)));
+        }
     }
 
     @Override

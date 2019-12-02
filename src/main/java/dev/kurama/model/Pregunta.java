@@ -2,11 +2,31 @@ package dev.kurama.model;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import javax.persistence.CollectionTable;
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 
+@Entity
 public class Pregunta {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(updatable = false, insertable = false)
+    private int id;
+
+    @Column(nullable = false)
     private String pregunta;
-    private ArrayList<String> opciones = new ArrayList<>();
+
+
+    @ElementCollection
+    @CollectionTable(name = "opciones", joinColumns = @JoinColumn(name = "pregunta_id"))
+    private List<String> opciones = new ArrayList<>();
 
     public Pregunta() {
     }
@@ -24,7 +44,7 @@ public class Pregunta {
         this.pregunta = pregunta;
     }
 
-    public ArrayList<String> getOpciones() {
+    public List<String> getOpciones() {
         return opciones;
     }
 

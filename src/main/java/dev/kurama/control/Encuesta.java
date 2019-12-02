@@ -1,11 +1,8 @@
 package dev.kurama.control;
 
 import dev.kurama.data.DataSource;
-import dev.kurama.model.EncuestaBean;
-import dev.kurama.model.Pregunta;
 import dev.kurama.model.Usuario;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -20,31 +17,22 @@ public class Encuesta extends HttpServlet {
             respuestas.add(Integer.parseInt(request.getParameter("radio" + i)));
         }
         Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
-        EncuestaBean encuestaBean = new EncuestaBean();
-        encuestaBean.setRespuestas(respuestas);
-        usuario.setEncuesta(encuestaBean);
+        usuario.setRespuestas(respuestas);
         response.setContentType("text/html");
-        response.getWriter().println("Encuesta enviada<br>");
+        response.getWriter().println("<br>Encuesta enviada<br><br>");
         response.getWriter().println("<a href=\"login\">Volver</a>");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
-        if (usuario.getEncuesta() == null) {
-
+        if (!usuario.isEncuestaRealizada()) {
             request.setAttribute("preguntas", DataSource.getPreguntas());
             request.getRequestDispatcher("Encuesta.jsp").forward(request, response);
         } else {
-            PrintWriter pw = response.getWriter();
-            int num = 0;
-            for (Pregunta pregunta : DataSource.getPreguntas()) {
-                pw.println("<br>Pregunta : " + pregunta.getPregunta() + "<br>");
-                int respuesta = usuario.getEncuesta().getRespuestas().get(num);
-                pw.println("Respuesta : " + num + " - " + pregunta.getOpciones().get(respuesta) + "<br><br>");
-                num++;
-            }
-            pw.println("<a href=\"login\">Volver</a>");
+            response.setContentType("text/html");
+            response.getWriter().println("Encuesta finalizada<br><br>");
+            response.getWriter().println("<a href=\"login\">Volver</a>");
         }
 
 

@@ -11,8 +11,11 @@ public class DataSource {
 
     private static Usuario[] usuarios = {
         new Usuario(1, "admin", "admin"),
-        new Usuario(2, "fran", "fran"),
-        new Usuario(3, "emilio", "emilio")
+        new Usuario(2, "a", "a"),
+        new Usuario(3, "b", "b"),
+        new Usuario(4, "c", "c"),
+        new Usuario(5, "d", "d"),
+        new Usuario(6, "e", "e")
     };
 
     public static Usuario[] getUsuarios() {
@@ -38,5 +41,13 @@ public class DataSource {
 
     public static ArrayList<Pregunta> getPreguntas() {
         return new ArrayList<>(Arrays.asList(preguntas));
+    }
+
+    public static Usuario getUsuario(int id) {
+        for (Usuario usuario : usuarios) {
+            if (usuario.getId() == id)
+                return usuario;
+        }
+        return null;
     }
 }
