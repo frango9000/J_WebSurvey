@@ -17,6 +17,24 @@
 <c:forEach var="user" items="${usuarios}" varStatus="i">
     <a href="/admin/usuario?id=${user.id}">${user.email}</a><br>
 </c:forEach>
+<br><br>
+Nuevo Usuario:
+<form method="post">
+    <table>
+        <tr>
+            <td>Email:</td>
+            <td><input type="text" name="email" value=""/></td>
+        </tr>
+        <tr>
+            <td>Pass:</td>
+            <td><input type="password" name="pass" value=""/></td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Nuevo"></td>
+        </tr>
+    </table>
+</form>
+<br>
 
 <br><a href="/admin">Volver</a><br>
 </body>

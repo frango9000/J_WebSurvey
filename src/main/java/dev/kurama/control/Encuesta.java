@@ -1,6 +1,6 @@
 package dev.kurama.control;
 
-import dev.kurama.data.DataSource;
+import dev.kurama.data.PreguntaDao;
 import dev.kurama.model.Usuario;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -15,7 +15,7 @@ public class Encuesta extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ArrayList<Integer> respuestas = new ArrayList<>();
-        for (int i = 0; i < DataSource.getPreguntas().size(); i++) {
+        for (int i = 0; i < PreguntaDao.getPreguntas().size(); i++) {
             respuestas.add(Integer.parseInt(request.getParameter("radio" + i)));
         }
         EntityManagerFactory emf = (EntityManagerFactory) getServletContext().getAttribute("emf");
@@ -37,7 +37,7 @@ public class Encuesta extends HttpServlet {
 
         Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
         if (!usuario.isEncuestaRealizada()) {
-            request.setAttribute("preguntas", DataSource.getPreguntas());
+            request.setAttribute("preguntas", PreguntaDao.getPreguntas());
             request.getRequestDispatcher("Encuesta.jsp").forward(request, response);
         } else {
             response.setContentType("text/html");

@@ -17,7 +17,7 @@ Usuario ${userDetail.email}<br><br>
 <c:choose>
     <c:when test="${empty userDetail.respuestas}">Encuesta no Realizada"</c:when>
     <c:otherwise>Tu Encuesta:<br><br>
-        <jsp:useBean id="source" class="dev.kurama.data.DataSource"/>
+        <jsp:useBean id="source" class="dev.kurama.data.PreguntaDao"/>
         <c:forEach var="pregunta" items="${source.getPreguntas()}" varStatus="i">
             ${i.index} - Pregunta: ${pregunta.pregunta}<br>
 
@@ -27,7 +27,34 @@ Usuario ${userDetail.email}<br><br>
         </c:forEach>
     </c:otherwise>
 </c:choose>
-<br><br>
+<br>
+
+<form method="post">
+    <input type="hidden" name="action" value="1"/>
+    <input type="hidden" name="affectedid" value="${userDetail.id}">
+    <table>
+        <tr>
+            <td>Clave Nueva:</td>
+            <td><input type="password" name="newPass1" value=""/></td>
+        </tr>
+        <tr>
+            <td>Clave Nueva:</td>
+            <td><input type="password" name="newPass2" value=""/></td>
+        </tr>
+        <tr>
+            <td><input type="submit" name="go" value="Cambiar Clave"></td>
+        </tr>
+    </table>
+</form>
+<br>
+
+<form method="post">
+    <input type="hidden" name="action" value="2">
+    <input type="hidden" name="affectedid" value="${userDetail.id}">
+    <input type="submit" value="Eliminar Encuesta">
+</form>
+<br>
+
 <a href="/admin/usuarios">Volver</a>
 </body>
 </html>

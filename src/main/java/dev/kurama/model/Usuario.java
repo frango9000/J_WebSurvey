@@ -28,8 +28,12 @@ public class Usuario {
     private int id;
 
 
+    @Column(unique = true, updatable = false, nullable = false)
     private String email;
+
+    @Column(nullable = false)
     private String pass;
+
     private boolean encuestaRealizada = false;
 
     @ElementCollection

@@ -17,7 +17,7 @@ Usuario ${usuario.email}<br><br>
 <c:choose>
     <c:when test="${empty usuario.respuestas}">Encuesta no Realizada"</c:when>
     <c:otherwise>Tu Encuesta:<br><br>
-        <jsp:useBean id="source" class="dev.kurama.data.DataSource"/>
+        <jsp:useBean id="source" class="dev.kurama.data.PreguntaDao"/>
         <c:forEach var="pregunta" items="${source.getPreguntas()}" varStatus="i">
             ${i.index} - Pregunta: ${pregunta.pregunta}<br>
 

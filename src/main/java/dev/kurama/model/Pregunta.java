@@ -11,8 +11,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 @Entity
+@NamedQueries({
+                  @NamedQuery(name = "Pregunta.findAll", query = "SELECT p FROM Pregunta p"),
+                  @NamedQuery(name = "Pregunta.findById", query = "SELECT p from Pregunta p WHERE p.id = :id")
+              })
 public class Pregunta {
 
     @Id
